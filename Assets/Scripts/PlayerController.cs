@@ -44,6 +44,6 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        return GetComponent<Rigidbody>().velocity.y == 0;
+        return GetComponent<Rigidbody>().velocity.y <= 0.000000000001;
     }
 }
