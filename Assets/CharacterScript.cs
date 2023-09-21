@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class CharacterScript : MonoBehaviour
 {
     Vector3 newPosition;
     public float speed = 3;
+    public Text text;
     void Start()
     {
         newPosition = transform.position;
