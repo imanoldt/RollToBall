@@ -52,11 +52,8 @@ public class EnemyController : MonoBehaviour
                 // Mirar al jugador
                 Vector3 direccionAlJugador = (new Vector3(player.position.x, transform.position.y, player.position.z) - transform.position).normalized;
 
-                // Calcular la nueva posición
-                Vector3 nuevaPosicion = transform.position + direccionAlJugador * datosEnemigo.velocidad * Time.deltaTime;
-
-                // Mover al enemigo hacia la nueva posición usando rb.MovePosition
-                rb.MovePosition(nuevaPosicion);
+                // Mover al enemigo hacia el jugador
+                transform.Translate(direccionAlJugador * datosEnemigo.velocidad * Time.deltaTime, Space.World);
 
                 // Asegurarse de que el enemigo mire al jugador
                 transform.LookAt(player);
@@ -70,12 +67,13 @@ public class EnemyController : MonoBehaviour
 
             case Estado.Ataque:
                 eventoAtaca?.Invoke();
-                
+
                 CambiarEstado(Estado.Pausa);
                 StartCoroutine(Pausado());
                 break;
         }
     }
+
 
     private void CambiarEstado(Estado nuevoEstado)
     {
